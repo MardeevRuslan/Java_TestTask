@@ -17,7 +17,7 @@ public class ParserArgs {
             String arg = args[i];
             if (arg.charAt(0) == '-') {
                 if (arg.length() > 2) {
-                    System.out.println("Not option " + arg);
+                    System.out.println("Нет опции " + arg);
                 } else {
                     i += addOption(arg.charAt(1), args[i + 1]);
                 }
@@ -38,7 +38,7 @@ public class ParserArgs {
                 argument.getOptions().put(option, value);
                 return 1;
             default:
-                System.out.println("Not option " + option);
+                System.out.println("Not option -" + option);
                 return 0;
 
         }
