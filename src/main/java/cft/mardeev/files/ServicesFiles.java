@@ -20,7 +20,7 @@ public class ServicesFiles {
 
     private CreateFile createFile;
 
-    private final int MAX_SIZE_LINE = 10;
+    private final int MAX_SIZE_LINE = 1000;
 
     public ServicesFiles(Argument argument, Result result) {
         this.argument = argument;
@@ -37,7 +37,7 @@ public class ServicesFiles {
             List<String> resultParser = parserFiles.parser();
             isEmptyFiles = resultParser.isEmpty();
             writerFiles.writeResult(resultParser);
-            if(result.getSize() >= MAX_SIZE_LINE || isEmptyFiles == false) {
+            if(result.getSize() >= MAX_SIZE_LINE || isEmptyFiles == true) {
                 createFile.create();
                 writerFiles.write();
             }
