@@ -5,7 +5,7 @@ import cft.mardeev.domain.Result;
 import cft.mardeev.files.CreateFile;
 import cft.mardeev.files.WriterFiles;
 import cft.mardeev.parser.ParserArgs;
-import cft.mardeev.parser.ParserFile;
+import cft.mardeev.files.ServicesFiles;
 import cft.mardeev.statistic.Statistic;
 
 import java.io.IOException;
@@ -18,13 +18,7 @@ public class App
         Result result = new Result();
         ParserArgs parserArgs = new ParserArgs(argument);
         parserArgs.parser(args);
-        ParserFile parserFile = new ParserFile(argument, result);
-        parserFile.parser();
-        CreateFile createFile = new CreateFile(argument, result);
-        createFile.create();
-        WriterFiles<Object> writerFiles = new WriterFiles<>(result, argument);
-        writerFiles.write();
-        Statistic statistic = new Statistic(argument, result);
-        statistic.printStatistic();
+        ServicesFiles servicesFiles = new ServicesFiles(argument, result);
+        servicesFiles.work();
     }
 }

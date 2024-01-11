@@ -22,9 +22,6 @@ public class Argument {
         this.options = options;
     }
 
-    public void setFiles(List<String> files) {
-        this.files = files;
-    }
 
     public List<String> getFiles() {
         return files;

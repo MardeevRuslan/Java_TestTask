@@ -42,24 +42,27 @@ public class Statistic<T extends Number> {
         System.out.println("Для чисел типа " + type);
         System.out.println("   Максимум " + Collections.max(listResult, Comparator.comparing(Number::doubleValue)));
         System.out.println("   Минимум " + Collections.min(listResult, Comparator.comparing(Number::doubleValue)));
-        System.out.println("   Сумма " +
-                listResult.stream()
-                        .mapToDouble(Number::doubleValue)
-                        .sum());
-        if (listResult.get(0) instanceof Integer) {
-            System.out.println("   Среднее значение " + (int)
+        if (listResult.get(0) instanceof Long) {
+            System.out.println("   Сумма " +
                     listResult.stream()
-                            .mapToInt(Number::intValue)
+                            .mapToLong(Number::longValue)
+                            .sum());
+            System.out.println("   Среднее значение " + (long)
+                    listResult.stream()
+                            .mapToLong(Number::longValue)
                             .average().
                             orElse(0));
         } else {
+            System.out.println("   Сумма " +
+                    listResult.stream()
+                            .mapToDouble(Number::doubleValue)
+                            .sum());
             System.out.println("   Среднее значение " +
                     listResult.stream()
                             .mapToDouble(Number::doubleValue)
                             .average().
                             orElse(0));
         }
-
     }
 
     private void printFullStatisticString(List<String> listResult) {

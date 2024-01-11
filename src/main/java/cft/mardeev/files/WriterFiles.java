@@ -3,7 +3,6 @@ package cft.mardeev.files;
 
 import cft.mardeev.domain.Argument;
 import cft.mardeev.domain.Result;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,6 +18,22 @@ public class WriterFiles<T> {
         this.argument = argument;
     }
 
+    public void writeResult (List<String> parserResult) {
+        for (String str : parserResult) {
+            try {
+                if (str.contains(".")) {
+                    Double d = Double.parseDouble(str);
+                    result.getResultDouble().add(d);
+                } else {
+                    Long i = Long.parseLong(str);
+                    result.getResultInt().add(i);
+                }
+            } catch (NumberFormatException e) {
+                result.getResultString().add(str);
+            }
+        }
+    }
+
     public void write()  {
         try {
             writeInt();
@@ -31,20 +46,36 @@ public class WriterFiles<T> {
 
     private void writeInt() throws IOException {
         List<T> listResult = (List<T>) result.getResultInt();
-        String filePath = result.getFiles().get("int").getPath();
-        writeFile(filePath, listResult);
+        try {
+            String filePath = result.getFiles().get("int").getPath();
+            writeFile(filePath, listResult);
+        } catch (NullPointerException e) {
+
+        }
+
+
     }
 
     private void writeString() throws IOException {
         List<T> listResult = (List<T>) result.getResultString();
-        String filePath = result.getFiles().get("string").getPath();
-        writeFile(filePath, listResult);
+        try {
+            String filePath = result.getFiles().get("string").getPath();
+            writeFile(filePath, listResult);
+        } catch (NullPointerException e) {
+
+        }
+
     }
 
     private void writeFloat() throws IOException {
         List<T> listResult = (List<T>) result.getResultDouble();
-        String filePath = result.getFiles().get("float").getPath();
-        writeFile(filePath, listResult);
+        try {
+            String filePath = result.getFiles().get("float").getPath();
+            writeFile(filePath, listResult);
+        } catch (NullPointerException e) {
+
+        }
+
     }
 
 

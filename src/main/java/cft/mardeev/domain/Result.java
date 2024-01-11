@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Result {
-    private List<Integer> resultInt;
+    private List<Long> resultInt;
     private List<String> resultString;
     private List<Double> resultDouble;
     private Map<String, File> files;
@@ -27,7 +27,7 @@ public class Result {
         return files;
     }
 
-    public List<Integer> getResultInt() {
+    public List<Long> getResultInt() {
         return resultInt;
     }
 
@@ -37,6 +37,10 @@ public class Result {
 
     public List<Double> getResultDouble() {
         return resultDouble;
+    }
+
+    public int getSize() {
+        return resultDouble.size() + resultString.size() + resultInt.size();
     }
 
 }
