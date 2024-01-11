@@ -6,8 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 public class Argument {
-    private Map<Character, String> options = new HashMap<>();
-    private List<String> files = new ArrayList<>();
+    private Map<Character, String> options ;
+    private List<String> files ;
+
+    public Argument() {
+        this.options = new HashMap<>();
+        this.files = new ArrayList<>();
+    }
 
     public Map<Character, String> getOptions() {
         return options;

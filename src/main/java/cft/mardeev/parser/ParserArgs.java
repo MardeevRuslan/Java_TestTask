@@ -19,7 +19,12 @@ public class ParserArgs {
                 if (arg.length() > 2) {
                     System.out.println("Нет опции " + arg);
                 } else {
-                    i += addOption(arg.charAt(1), args[i + 1]);
+                    try {
+                        i += addOption(arg.charAt(1), args[i + 1]);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        i += addOption(arg.charAt(1), "");
+                    }
+
                 }
             } else {
                 argument.getFiles().add(arg);
@@ -31,14 +36,15 @@ public class ParserArgs {
         switch (option) {
             case 's':
             case 'f':
-                argument.getOptions().put(option, null);
+            case 'a':
+                argument.getOptions().put(option, "Yes");
                 return 0;
             case 'o':
             case 'p':
                 argument.getOptions().put(option, value);
                 return 1;
             default:
-                System.out.println("Not option -" + option);
+                System.out.println("Нет опции -" + option);
                 return 0;
 
         }
