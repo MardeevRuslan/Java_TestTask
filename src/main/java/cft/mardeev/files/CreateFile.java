@@ -40,25 +40,23 @@ public class CreateFile {
         String prefix = argument.getOptions().get('p');
         if (!result.getResultString().isEmpty()) {
             String pathName = path + '/' + prefix + "strings.txt";
-            createFile(pathName, result.getResultString());
+            createFile(pathName,"string");
         }
         if (!result.getResultInt().isEmpty()) {
             String pathName = path + '/' + prefix + "integers.txt";
-            createFile(pathName, result.getResultInt());
+            createFile(pathName, "int");
         }
         if (!result.getResultDouble().isEmpty()) {
             String pathName = path + '/' + prefix + "floats.txt";
-            createFile(pathName, result.getResultDouble());
+            createFile(pathName, "float");
         }
     }
 
-    private void createFile(String name, List list) throws IOException {
+    private void createFile(String name, String key) throws IOException {
         File file = new File(name);
-        if (!file.exists() || (file.exists() && argument.getOptions().get('a') == null)) {
-            file.delete();
+        if (!file.exists()) {
             file.createNewFile();
         }
-        WriterFiles writerFiles = new WriterFiles<>(list);
-        writerFiles.write(file.getPath());
+        result.getFiles().put(key, file);
     }
 }

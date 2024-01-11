@@ -6,6 +6,7 @@ import cft.mardeev.files.CreateFile;
 import cft.mardeev.files.WriterFiles;
 import cft.mardeev.parser.ParserArgs;
 import cft.mardeev.parser.ParserFile;
+import cft.mardeev.statistic.Statistic;
 
 import java.io.IOException;
 
@@ -21,5 +22,9 @@ public class App
         parserFile.parser();
         CreateFile createFile = new CreateFile(argument, result);
         createFile.create();
+        WriterFiles<Object> writerFiles = new WriterFiles<>(result, argument);
+        writerFiles.write();
+        Statistic statistic = new Statistic(argument, result);
+        statistic.printStatistic();
     }
 }
