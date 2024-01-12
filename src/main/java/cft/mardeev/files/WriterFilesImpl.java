@@ -2,25 +2,25 @@ package cft.mardeev.files;
 
 
 import cft.mardeev.domain.Result;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@Component
+@AllArgsConstructor
 public class WriterFilesImpl<T> implements WriterFiles {
 
-    private CreatorFiles creatorFiles;
-    private Result result;
-
+    private final CreatorFiles creatorFiles;
+    private final Result result;
     private Map<String, String> options;
 
-    public WriterFilesImpl(CreatorFiles creatorFiles) {
-        this.creatorFiles = creatorFiles;
-        this.result = new Result();
-    }
 
     @Override
     public void accept(List<String> readerResult) {
@@ -64,39 +64,23 @@ public class WriterFilesImpl<T> implements WriterFiles {
 
     private void writeInt(Map<String, String> outputFiles) throws IOException {
         List<T> listResult = (List<T>) result.getResultInt();
-        try {
-            String filePath = outputFiles.get("integers.txt");
-            writeFile(filePath, listResult);
-            result.getResultInt().clear();
-        } catch (NullPointerException e) {
-
-        }
-
-
+        String filePath = outputFiles.get("integers.txt");
+        writeFile(filePath, listResult);
+        result.getResultInt().clear();
     }
 
     private void writeString(Map<String, String> outputFiles) throws IOException {
         List<T> listResult = (List<T>) result.getResultString();
-        try {
-            String filePath = outputFiles.get("strings.txt");
-            writeFile(filePath, listResult);
-            result.getResultString().clear();
-        } catch (NullPointerException e) {
-
-        }
-
+        String filePath = outputFiles.get("strings.txt");
+        writeFile(filePath, listResult);
+        result.getResultString().clear();
     }
 
     private void writeFloat(Map<String, String> outputFiles) throws IOException {
         List<T> listResult = (List<T>) result.getResultDouble();
-        try {
-            String filePath = outputFiles.get("floats.txt");
-            writeFile(filePath, listResult);
-            result.getResultDouble().clear();
-        } catch (NullPointerException e) {
-
-        }
-
+        String filePath = outputFiles.get("floats.txt");
+        writeFile(filePath, listResult);
+        result.getResultDouble().clear();
     }
 
 

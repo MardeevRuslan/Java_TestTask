@@ -8,11 +8,7 @@ import java.util.List;
 
 public class ReaderFilesImpl implements ReaderFiles {
 
-    List<BufferedReader> bufferedReaderList;
-
-    public ReaderFilesImpl() {
-        this.bufferedReaderList = new ArrayList<>();
-    }
+    private  final List<BufferedReader> bufferedReaderList = new ArrayList<>();
 
     @Override
     public void inputFiles(List<String> files) {

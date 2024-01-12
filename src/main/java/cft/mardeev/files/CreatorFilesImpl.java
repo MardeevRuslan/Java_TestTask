@@ -2,20 +2,21 @@ package cft.mardeev.files;
 
 
 import cft.mardeev.domain.Result;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
+@AllArgsConstructor
 public class CreatorFilesImpl implements CreatorFiles {
 
-    private Map<String, String> createsFiles;
+    private final Map<String, String> createsFiles =  new HashMap<>();;
     private Result result;
-
-    public CreatorFilesImpl() {
-        createsFiles = new HashMap<>();
-    }
 
 
     @Override

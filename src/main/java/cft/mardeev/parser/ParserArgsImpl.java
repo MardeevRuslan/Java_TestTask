@@ -1,15 +1,19 @@
 package cft.mardeev.parser;
 
 import cft.mardeev.domain.Arguments;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
-
+@Component
+@AllArgsConstructor
 public class ParserArgsImpl implements ParserArgs {
 
     private Arguments arguments;
 
-
-    public ParserArgsImpl() {
-        this.arguments = new Arguments();
+    @Override
+    public Arguments parse(String[] args) {
+        parser(args);
+        return this.arguments;
     }
 
     private void parser(String[] args) {
@@ -50,9 +54,5 @@ public class ParserArgsImpl implements ParserArgs {
         }
     }
 
-    @Override
-    public Arguments parse(String[] args) {
-        parser(args);
-        return this.arguments;
-    }
+
 }

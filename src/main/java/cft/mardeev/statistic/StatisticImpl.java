@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
 
-public class StatisticImpl<T extends Number> implements Statistic {
+public class StatisticImpl implements Statistic {
 
 
     @Override

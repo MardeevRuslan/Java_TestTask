@@ -1,33 +1,14 @@
 package cft.mardeev.domain;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class Result {
-    private List<Long> resultInt;
-    private List<String> resultString;
-    private List<Double> resultDouble;
-
-;
-
-    public Result() {
-        this.resultDouble = new ArrayList<>();
-        this.resultInt = new ArrayList<>();
-        this.resultString = new ArrayList<>();
-
-    }
-
-    public List<Long> getResultInt() {
-        return resultInt;
-    }
-
-    public List<String> getResultString() {
-        return resultString;
-    }
-
-    public List<Double> getResultDouble() {
-        return resultDouble;
-    }
-
+    private final List<Long> resultInt  = new ArrayList<>();
+    private final List<String> resultString = new ArrayList<>();
+    private final List<Double> resultDouble = new ArrayList<>();
 
 }
