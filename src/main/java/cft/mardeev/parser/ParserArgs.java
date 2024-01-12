@@ -1,52 +1,10 @@
 package cft.mardeev.parser;
 
-import cft.mardeev.domain.Argument;
+import cft.mardeev.domain.Arguments;
 
+import java.util.Map;
 
-public class ParserArgs {
+public interface ParserArgs {
+    Arguments parse(String [ ] args);
 
-    private Argument argument;
-
-    public ParserArgs(Argument argument) {
-        this.argument = argument;
-    }
-
-    public void parser(String[] args) {
-        int size = args.length;
-        for (int i = 0; i < size; i++) {
-            String arg = args[i];
-            if (arg.charAt(0) == '-') {
-                if (arg.length() > 2) {
-                    System.out.println("Нет опции " + arg);
-                } else {
-                    try {
-                        i += addOption(arg.charAt(1), args[i + 1]);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        i += addOption(arg.charAt(1), "");
-                    }
-
-                }
-            } else {
-                argument.getFiles().add(arg);
-            }
-        }
-    }
-
-    private int addOption(Character option, String value) {
-        switch (option) {
-            case 's':
-            case 'f':
-            case 'a':
-                argument.getOptions().put(option, "Yes");
-                return 0;
-            case 'o':
-            case 'p':
-                argument.getOptions().put(option, value);
-                return 1;
-            default:
-                System.out.println("Нет опции -" + option);
-                return 0;
-
-        }
-    }
 }
