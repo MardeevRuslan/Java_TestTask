@@ -1,26 +1,31 @@
 package cft.mardeev.files;
 
 
-import cft.mardeev.domain.Arguments;
 import cft.mardeev.domain.Result;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CreatorFilesImpl implements CreatorFiles {
 
     private Map<String, String> createsFiles;
-
     private Result result;
 
     public CreatorFilesImpl() {
         createsFiles = new HashMap<>();
     }
 
+
+    @Override
+    public Map<String, String> getCreatesFiles() {
+        return createsFiles;
+    }
+
     @Override
     public Map<String, String> createFiles(Map<String, String> options, Result result) {
-        this.result =result;
+        this.result = result;
         create(options);
         return this.createsFiles;
     }
@@ -49,17 +54,17 @@ public class CreatorFilesImpl implements CreatorFiles {
     private void createFiles(String path, Map<String, String> options) throws IOException {
         String prefix = options.get("-p");
         boolean isAppend = (options.get("-a") != null);
-        if (!result.getResultString().isEmpty() && createsFiles.get("string") == null) {
+        if (!result.getResultString().isEmpty() && createsFiles.get("strings.txt") == null) {
             String pathName = path + '/' + prefix + "strings.txt";
-            createFile(pathName, "string", isAppend);
+            createFile(pathName, "strings.txt", isAppend);
         }
-        if (!result.getResultInt().isEmpty() && createsFiles.get("int") == null) {
+        if (!result.getResultInt().isEmpty() && createsFiles.get("integers.txt") == null) {
             String pathName = path + '/' + prefix + "integers.txt";
-            createFile(pathName, "int", isAppend);
+            createFile(pathName, "integers.txt", isAppend);
         }
-        if (!result.getResultDouble().isEmpty() && createsFiles.get("float") == null) {
+        if (!result.getResultDouble().isEmpty() && createsFiles.get("floats.txt") == null) {
             String pathName = path + '/' + prefix + "floats.txt";
-            createFile(pathName, "float", isAppend);
+            createFile(pathName, "floats.txt", isAppend);
         }
     }
 

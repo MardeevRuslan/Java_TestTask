@@ -1,10 +1,7 @@
 package cft.mardeev.domain;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Result {
     private List<Long> resultInt;

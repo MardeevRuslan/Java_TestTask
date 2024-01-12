@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 
 
 public class WriterFilesImpl<T> implements WriterFiles {
@@ -28,7 +27,6 @@ public class WriterFilesImpl<T> implements WriterFiles {
         writeResult(readerResult);
         write();
     }
-
 
 
     @Override
@@ -53,7 +51,7 @@ public class WriterFilesImpl<T> implements WriterFiles {
         }
     }
 
-    public void write()  {
+    public void write() {
         Map<String, String> outputFiles = creatorFiles.createFiles(options, result);
         try {
             writeInt(outputFiles);
@@ -67,7 +65,7 @@ public class WriterFilesImpl<T> implements WriterFiles {
     private void writeInt(Map<String, String> outputFiles) throws IOException {
         List<T> listResult = (List<T>) result.getResultInt();
         try {
-            String filePath = outputFiles.get("int");
+            String filePath = outputFiles.get("integers.txt");
             writeFile(filePath, listResult);
             result.getResultInt().clear();
         } catch (NullPointerException e) {
@@ -80,7 +78,7 @@ public class WriterFilesImpl<T> implements WriterFiles {
     private void writeString(Map<String, String> outputFiles) throws IOException {
         List<T> listResult = (List<T>) result.getResultString();
         try {
-            String filePath = outputFiles.get("string");
+            String filePath = outputFiles.get("strings.txt");
             writeFile(filePath, listResult);
             result.getResultString().clear();
         } catch (NullPointerException e) {
@@ -92,7 +90,7 @@ public class WriterFilesImpl<T> implements WriterFiles {
     private void writeFloat(Map<String, String> outputFiles) throws IOException {
         List<T> listResult = (List<T>) result.getResultDouble();
         try {
-            String filePath = outputFiles.get("float");
+            String filePath = outputFiles.get("floats.txt");
             writeFile(filePath, listResult);
             result.getResultDouble().clear();
         } catch (NullPointerException e) {

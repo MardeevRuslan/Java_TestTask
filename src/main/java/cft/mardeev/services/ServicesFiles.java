@@ -6,4 +6,6 @@ import java.util.Map;
 
 public interface ServicesFiles {
     void work(Arguments arguments);
+
+    Map<String, String> getOutputFiles();
 }

@@ -2,9 +2,6 @@ package cft.mardeev.parser;
 
 import cft.mardeev.domain.Arguments;
 
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class ParserArgsImpl implements ParserArgs {
 
@@ -15,7 +12,7 @@ public class ParserArgsImpl implements ParserArgs {
         this.arguments = new Arguments();
     }
 
-    private void parser(String [] args) {
+    private void parser(String[] args) {
         int size = args.length;
         for (int i = 0; i < size; i++) {
             String arg = args[i];
@@ -54,7 +51,7 @@ public class ParserArgsImpl implements ParserArgs {
     }
 
     @Override
-    public Arguments parse(String [] args) {
+    public Arguments parse(String[] args) {
         parser(args);
         return this.arguments;
     }

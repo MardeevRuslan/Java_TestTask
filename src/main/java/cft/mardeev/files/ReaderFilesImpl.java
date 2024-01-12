@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReaderFilesImpl implements  ReaderFiles{
+public class ReaderFilesImpl implements ReaderFiles {
 
     List<BufferedReader> bufferedReaderList;
 
