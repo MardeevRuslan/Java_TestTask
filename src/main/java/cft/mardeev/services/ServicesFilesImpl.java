@@ -32,11 +32,11 @@ public class ServicesFilesImpl implements ServicesFiles {
     public void work(Arguments arguments) {
         readerFiles.inputFiles(arguments.getFiles());
         writerFiles.inputOption(arguments.getOption());
-        while (shouldStop == false) {
+        while (!shouldStop) {
             CompletableFuture.supplyAsync(producer)
                     .thenAcceptAsync(consumer);
             try {
-                Thread.sleep(5);
+                Thread.sleep(SLEEP_THREAD);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

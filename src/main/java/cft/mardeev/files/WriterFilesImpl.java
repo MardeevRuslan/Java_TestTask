@@ -2,16 +2,17 @@ package cft.mardeev.files;
 
 
 import cft.mardeev.domain.Result;
+import cft.mardeev.utils.Literals;
+import cft.mardeev.utils.Type;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @Component
 @AllArgsConstructor
@@ -20,6 +21,7 @@ public class WriterFilesImpl<T> implements WriterFiles {
     private final CreatorFiles creatorFiles;
     private final Result result;
     private Map<String, String> options;
+    private Logger logger;
 
 
     @Override
@@ -58,27 +60,27 @@ public class WriterFilesImpl<T> implements WriterFiles {
             writeFloat(outputFiles);
             writeString(outputFiles);
         } catch (IOException e) {
-            System.out.println("Запись в файл не удалась");
+            logger.info(Literals.FILE_NOT_WRITE);
         }
     }
 
     private void writeInt(Map<String, String> outputFiles) throws IOException {
         List<T> listResult = (List<T>) result.getResultInt();
-        String filePath = outputFiles.get("integers.txt");
+        String filePath = outputFiles.get(Type.INTEGER_TYPE);
         writeFile(filePath, listResult);
         result.getResultInt().clear();
     }
 
     private void writeString(Map<String, String> outputFiles) throws IOException {
         List<T> listResult = (List<T>) result.getResultString();
-        String filePath = outputFiles.get("strings.txt");
+        String filePath = outputFiles.get(Type.STRING_TYPE);
         writeFile(filePath, listResult);
         result.getResultString().clear();
     }
 
     private void writeFloat(Map<String, String> outputFiles) throws IOException {
         List<T> listResult = (List<T>) result.getResultDouble();
-        String filePath = outputFiles.get("floats.txt");
+        String filePath = outputFiles.get(Type.FLOAT_TYPE);
         writeFile(filePath, listResult);
         result.getResultDouble().clear();
     }

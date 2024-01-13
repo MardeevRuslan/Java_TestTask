@@ -1,14 +1,16 @@
-package cft.mardeev.app;
+package cft.mardeev.main;
 
 import cft.mardeev.config.ApplicationConfig;
+import cft.mardeev.filteringutility.FilterFilesUtility;
+import cft.mardeev.filteringutility.FilterFilesUtilityImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class App
+public class Main
 {
     public static void main( String[] args )  {
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-        Application application = context.getBean(ApplicationImpl.class);
-        application.run(args);
+        FilterFilesUtility filterFilesUtility = context.getBean(FilterFilesUtilityImpl.class);
+        filterFilesUtility.run(args);
     }
 }

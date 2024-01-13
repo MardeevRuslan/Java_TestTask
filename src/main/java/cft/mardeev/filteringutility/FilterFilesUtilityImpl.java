@@ -1,4 +1,4 @@
-package cft.mardeev.app;
+package cft.mardeev.filteringutility;
 
 import cft.mardeev.domain.Arguments;
 import cft.mardeev.parser.ParserArgs;
@@ -9,13 +9,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class ApplicationImpl implements Application {
+public class FilterFilesUtilityImpl implements FilterFilesUtility {
 
     private Arguments arguments;
     private ParserArgs parserArgs;
     private ServicesFiles servicesFiles;
     private Statistic statistic;
-
 
     @Override
     public void run(String[] args) {

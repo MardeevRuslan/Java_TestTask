@@ -1,14 +1,22 @@
 package cft.mardeev.files;
 
+import cft.mardeev.utils.Literals;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
+@Component
+@AllArgsConstructor
 public class ReaderFilesImpl implements ReaderFiles {
 
     private  final List<BufferedReader> bufferedReaderList = new ArrayList<>();
+    private Logger logger;
 
     @Override
     public void inputFiles(List<String> files) {
@@ -26,7 +34,7 @@ public class ReaderFilesImpl implements ReaderFiles {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
                 bufferedReaderList.add(bufferedReader);
             } catch (IOException e) {
-                System.out.println("Файл не найден: " + file);
+                logger.info(Literals.FILE_NOT + file);
             }
         }
     }
@@ -45,7 +53,7 @@ public class ReaderFilesImpl implements ReaderFiles {
                     stringList.add(string);
                 }
             } catch (IOException e) {
-                System.out.println("Не возможно прочитать файл ");
+                logger.info(Literals.FILE_NOT_READ);
             }
         }
         return stringList;

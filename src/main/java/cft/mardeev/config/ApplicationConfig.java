@@ -3,17 +3,15 @@ package cft.mardeev.config;
 
 import cft.mardeev.domain.Arguments;
 import cft.mardeev.domain.Result;
-import cft.mardeev.files.*;
-import cft.mardeev.parser.ParserArgs;
-import cft.mardeev.parser.ParserArgsImpl;
-import cft.mardeev.services.ServicesFiles;
-import cft.mardeev.services.ServicesFilesImpl;
 import cft.mardeev.statistic.Statistic;
 import cft.mardeev.statistic.StatisticImpl;
+import cft.mardeev.utils.Literals;
 import org.springframework.context.annotation.*;
 
+import java.util.logging.Logger;
+
 @Configuration
-@ComponentScan(basePackages = {"cft.mardeev/*"})
+@ComponentScan(basePackages = {Literals.PACKAGES})
 public class ApplicationConfig {
 
     @Bean
@@ -31,10 +29,12 @@ public class ApplicationConfig {
         return new Result();
     }
     
-    @Bean
-    public ReaderFiles readerFiles() {
-        return new ReaderFilesImpl();
-    }
 
+
+    @Bean
+    @Scope("prototype")
+    public Logger logger () {
+        return  Logger.getLogger(getClass().getName());
+    }
 
 }

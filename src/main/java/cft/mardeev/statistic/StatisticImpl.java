@@ -1,6 +1,10 @@
 package cft.mardeev.statistic;
 
 
+import cft.mardeev.utils.Literals;
+import cft.mardeev.utils.Option;
+import cft.mardeev.utils.Type;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,18 +15,18 @@ public class StatisticImpl implements Statistic {
 
     @Override
     public void printStatistic(Map<String, String> option, Map<String, String> outputFiles) {
-        if (option.get("-f") != null) {
+        if (option.get(Option.OPTION_F) != null) {
             printShortStatistic(outputFiles);
             printFullStatistic(outputFiles);
-        } else if (option.get("-s") != null) {
+        } else if (option.get(Option.OPTION_S) != null) {
             printShortStatistic(outputFiles);
         }
     }
 
     private void printFullStatistic(Map<String, String> outputFiles) {
-        printFullStatisticFloat(outputFiles.get("floats.txt"));
-        printFullStatisticInteger(outputFiles.get("integers.txt"));
-        printFullStatisticString(outputFiles.get("strings.txt"));
+        printFullStatisticFloat(outputFiles.get(Type.FLOAT_TYPE));
+        printFullStatisticInteger(outputFiles.get(Type.INTEGER_TYPE));
+        printFullStatisticString(outputFiles.get(Type.STRING_TYPE));
     }
 
     private void printShortStatistic(Map<String, String> outputFiles) {
@@ -41,7 +45,7 @@ public class StatisticImpl implements Statistic {
                 count++;
             }
         } catch (IOException e) {
-            System.out.println("Ошибка в статистике");
+            System.out.println(Literals.ERROR_STATISTIC);
             e.printStackTrace();
         }
         return count;
@@ -61,9 +65,11 @@ public class StatisticImpl implements Statistic {
                 count++;
                 sum += Double.parseDouble(str);
             }
-            coverage = sum / count;
+            if (count != 0) {
+                coverage = sum / count;
+            }
         } catch (IOException e) {
-            System.out.println("Ошибка в статистике");
+            System.out.println(Literals.ERROR_STATISTIC);
             e.printStackTrace();
         }
         System.out.println("Для чисел типа " + "float");
