@@ -37,4 +37,9 @@ public class ApplicationConfig {
         return  Logger.getLogger(getClass().getName());
     }
 
+    @Bean
+    public boolean shouldStop() {
+        return false;
+    }
+
 }
