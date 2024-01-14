@@ -2,11 +2,12 @@ package cft.mardeev.services;
 
 
 import cft.mardeev.data.Arguments;
-import cft.mardeev.files.*;
+import cft.mardeev.files.CreatorFiles;
+import cft.mardeev.files.ReaderFiles;
+import cft.mardeev.files.WriterFiles;
 import cft.mardeev.utils.Value;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -19,7 +20,7 @@ public class ServicesFilesImpl implements ServicesFiles {
 
     private ReaderFiles readerFiles;
     private WriterFiles writerFiles;
-    private  CreatorFiles creatorFiles;
+    private CreatorFiles creatorFiles;
     private boolean shouldStop;
     private Logger logger;
     private Level warnLevel;
@@ -32,7 +33,7 @@ public class ServicesFilesImpl implements ServicesFiles {
         while (!shouldStop) {
             CompletableFuture.supplyAsync(() -> readerFiles.get())
                     .thenAcceptAsync(i -> {
-                        if(i.isEmpty()) {
+                        if (i.isEmpty()) {
                             shouldStop = true;
                         } else {
                             writerFiles.accept(i);
@@ -46,7 +47,6 @@ public class ServicesFilesImpl implements ServicesFiles {
             }
         }
     }
-
 
 
     @Override

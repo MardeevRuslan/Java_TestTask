@@ -1,5 +1,5 @@
 package cft.mardeev.filteringutility;
 
 public interface FilterFilesUtility {
-    void run(String [] args);
+    void run(String[] args);
 }

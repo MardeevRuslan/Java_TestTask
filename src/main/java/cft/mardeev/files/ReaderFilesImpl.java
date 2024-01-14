@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 @AllArgsConstructor
 public class ReaderFilesImpl implements ReaderFiles {
 
-    private  final List<BufferedReader> bufferedReaderList = new ArrayList<>();
+    private final List<BufferedReader> bufferedReaderList = new ArrayList<>();
     private Logger logger;
 
     @Override

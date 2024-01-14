@@ -3,10 +3,11 @@ package cft.mardeev.config;
 
 import cft.mardeev.data.Arguments;
 import cft.mardeev.data.Result;
-import cft.mardeev.statistic.Statistic;
-import cft.mardeev.statistic.StatisticImpl;
 import cft.mardeev.utils.Literals;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ public class ApplicationConfig {
 
     @Bean
     public Arguments arguments() {
-       return new Arguments();
+        return new Arguments();
     }
 
 
@@ -27,20 +28,20 @@ public class ApplicationConfig {
     }
 
 
-
     @Bean
     @Scope("prototype")
-    public Logger logger () {
-        return  Logger.getLogger(getClass().getName());
+    public Logger logger() {
+        return Logger.getLogger(getClass().getName());
     }
 
     @Bean
     public boolean shouldStop() {
         return false;
     }
+
     @Bean
     public Level warnLevel() {
-        return  Level.WARNING;
+        return Level.WARNING;
     }
 
 }
