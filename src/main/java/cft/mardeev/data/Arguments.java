@@ -13,5 +13,4 @@ import java.util.Map;
 public class Arguments {
     private final Map<String, String> option = new HashMap<>();
     private final List<String> files = new ArrayList<>();
-
 }

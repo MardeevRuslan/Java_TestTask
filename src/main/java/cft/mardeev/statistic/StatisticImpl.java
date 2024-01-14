@@ -24,12 +24,15 @@ public class StatisticImpl implements Statistic {
 
     @Override
     public void printStatistic(Map<String, String> option, Map<String, String> outputFiles) {
-        if (option.get(Option.OPTION_F) != null) {
-            printShortStatistic(outputFiles);
-            printFullStatistic(outputFiles);
-        } else if (option.get(Option.OPTION_S) != null) {
-            printShortStatistic(outputFiles);
+        if (!outputFiles.isEmpty()) {
+            if (option.get(Option.OPTION_F) != null) {
+                printShortStatistic(outputFiles);
+                printFullStatistic(outputFiles);
+            } else if (option.get(Option.OPTION_S) != null) {
+                printShortStatistic(outputFiles);
+            }
         }
+
     }
 
     private void printFullStatistic(Map<String, String> outputFiles) {
