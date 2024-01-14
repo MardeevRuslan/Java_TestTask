@@ -1,6 +1,6 @@
 package cft.mardeev.filteringutility;
 
-import cft.mardeev.domain.Arguments;
+import cft.mardeev.data.Arguments;
 import cft.mardeev.parser.ParserArgs;
 import cft.mardeev.services.ServicesFiles;
 import cft.mardeev.statistic.Statistic;

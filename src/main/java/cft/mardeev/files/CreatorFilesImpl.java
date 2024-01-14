@@ -1,7 +1,7 @@
 package cft.mardeev.files;
 
 
-import cft.mardeev.domain.Result;
+import cft.mardeev.data.Result;
 import cft.mardeev.utils.Literals;
 import cft.mardeev.utils.Option;
 import cft.mardeev.utils.Type;

@@ -1,6 +1,6 @@
 package cft.mardeev.services;
 
-import cft.mardeev.domain.Arguments;
+import cft.mardeev.data.Arguments;
 
 import java.util.Map;
 

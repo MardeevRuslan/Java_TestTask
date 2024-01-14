@@ -1,13 +1,14 @@
 package cft.mardeev.config;
 
 
-import cft.mardeev.domain.Arguments;
-import cft.mardeev.domain.Result;
+import cft.mardeev.data.Arguments;
+import cft.mardeev.data.Result;
 import cft.mardeev.statistic.Statistic;
 import cft.mardeev.statistic.StatisticImpl;
 import cft.mardeev.utils.Literals;
 import org.springframework.context.annotation.*;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Configuration
@@ -19,16 +20,12 @@ public class ApplicationConfig {
        return new Arguments();
     }
 
-    @Bean
-    public Statistic statistic() {
-        return new StatisticImpl();
-    }
 
     @Bean
     public Result result() {
         return new Result();
     }
-    
+
 
 
     @Bean
@@ -40,6 +37,10 @@ public class ApplicationConfig {
     @Bean
     public boolean shouldStop() {
         return false;
+    }
+    @Bean
+    public Level warnLevel() {
+        return  Level.WARNING;
     }
 
 }

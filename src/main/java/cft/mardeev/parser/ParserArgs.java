@@ -1,6 +1,6 @@
 package cft.mardeev.parser;
 
-import cft.mardeev.domain.Arguments;
+import cft.mardeev.data.Arguments;
 
 
 public interface ParserArgs {

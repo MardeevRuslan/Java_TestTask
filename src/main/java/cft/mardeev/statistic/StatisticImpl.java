@@ -4,13 +4,22 @@ package cft.mardeev.statistic;
 import cft.mardeev.utils.Literals;
 import cft.mardeev.utils.Option;
 import cft.mardeev.utils.Type;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+@Component
+@AllArgsConstructor
 public class StatisticImpl implements Statistic {
+
+    private Logger logger;
+    private Level warnLevel;
 
 
     @Override
@@ -45,8 +54,7 @@ public class StatisticImpl implements Statistic {
                 count++;
             }
         } catch (IOException e) {
-            System.out.println(Literals.ERROR_STATISTIC);
-            e.printStackTrace();
+            logger.log(warnLevel, Literals.ERROR_STATISTIC, e);
         }
         return count;
     }
@@ -69,8 +77,7 @@ public class StatisticImpl implements Statistic {
                 coverage = sum / count;
             }
         } catch (IOException e) {
-            System.out.println(Literals.ERROR_STATISTIC);
-            e.printStackTrace();
+            logger.log(warnLevel, Literals.ERROR_STATISTIC, e);
         }
         System.out.println("Для чисел типа " + "float");
         System.out.println("   Максимум " + max);
@@ -94,10 +101,11 @@ public class StatisticImpl implements Statistic {
                 count++;
                 sum += Long.parseLong(str);
             }
-            coverage = sum / count;
+            if (count != 0) {
+                coverage = sum / count;
+            }
         } catch (IOException e) {
-            System.out.println("Ошибка в статистике");
-            e.printStackTrace();
+            logger.log(warnLevel, Literals.ERROR_STATISTIC, e);
         }
         System.out.println("Для чисел типа " + "integer");
         System.out.println("   Максимум " + max);
@@ -117,8 +125,7 @@ public class StatisticImpl implements Statistic {
                 min = Math.min(min, str.length());
             }
         } catch (IOException e) {
-            System.out.println("Ошибка в статистике");
-            e.printStackTrace();
+            logger.log(warnLevel, Literals.ERROR_STATISTIC, e);
         }
         System.out.println("Самая длинная строка " +
                 max);

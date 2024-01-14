@@ -1,4 +1,4 @@
-package cft.mardeev.domain;
+package cft.mardeev.data;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;

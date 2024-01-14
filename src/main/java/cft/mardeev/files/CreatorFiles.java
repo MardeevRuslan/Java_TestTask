@@ -1,6 +1,6 @@
 package cft.mardeev.files;
 
-import cft.mardeev.domain.Result;
+import cft.mardeev.data.Result;
 
 import java.util.Map;
 

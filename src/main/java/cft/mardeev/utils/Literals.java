@@ -4,7 +4,10 @@ public final class Literals {
     public static final String PACKAGES = "cft.mardeev/*";
     public static final String USER_DIR = "user.dir";
     public static final char SLASH = '/';
+    public static final char OPTION = '-';
     public static final String FILE_NOT = "Файл не найден: ";
+
+    public static final String EMPTY_STRING = "";
     public static final String OPTION_NOT = "Нет опции ";
     public static final String FILE_NOT_READ = "Не возможно прочитать файл ";
     public static final String FILE_NOT_WRITE = "Запись в файл не удалась";

@@ -1,8 +1,9 @@
 package cft.mardeev.parser;
 
-import cft.mardeev.domain.Arguments;
+import cft.mardeev.data.Arguments;
 import cft.mardeev.utils.Literals;
 import cft.mardeev.utils.Option;
+import cft.mardeev.utils.Value;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,6 @@ import java.util.logging.Logger;
 public class ParserArgsImpl implements ParserArgs {
 
     private Arguments arguments;
-    private final String MOCK_VALUE = "YES";
 
     private Logger logger;
 
@@ -27,7 +27,7 @@ public class ParserArgsImpl implements ParserArgs {
         int size = args.length;
         for (int i = 0; i < size; i++) {
             String arg = args[i];
-            if (arg.charAt(0) == '-') {
+            if (arg.charAt(0) == Literals.OPTION) {
                 if (arg.length() > 2) {
                     logger.info(Literals.OPTION_NOT + arg);
                 } else {
@@ -48,11 +48,11 @@ public class ParserArgsImpl implements ParserArgs {
             case Option.OPTION_S:
             case Option.OPTION_F:
             case Option.OPTION_A:
-                this.arguments.getOption().put(option, MOCK_VALUE);
+                this.arguments.getOption().put(option, Value.MOCK_VALUE);
                 return 0;
             case Option.OPTION_O:
             case Option.OPTION_P:
-                value += "";
+                value += Literals.EMPTY_STRING;
                 arguments.getOption().put(option, value);
                 return 1;
             default:
